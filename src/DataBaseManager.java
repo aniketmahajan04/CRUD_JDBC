@@ -1,14 +1,23 @@
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class DataBaseManager {
-//    private static final String url = "jdbc:mysql://localhost:3306/mydb";
-//    private static final String user = "root";
-//    private static final String password = "AM@123aniket";
 
 
-    public void insetToDB(PreparedStatement pstmt, int id, String username, String email, String password) throws SQLException {
+
+    public void insetToDB(PreparedStatement pstmt, Scanner scan) {
         try{
+            System.out.println("Enter User's Id");
+            int id = scan.nextInt();
+            scan.nextLine();
+            System.out.println("Enter user's username");
+            String username = scan.nextLine();
+            System.out.println("Enter user's email");
+            String email = scan.nextLine();
+            System.out.println("Enter user's password");
+            String password = scan.nextLine();
+
             pstmt.setInt(1, id);
             pstmt.setString(2, username);
             pstmt.setString(3, email);
