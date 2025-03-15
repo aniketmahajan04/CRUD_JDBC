@@ -36,7 +36,8 @@ public class Main {
                     PreparedStatement pstmt = connection.prepareStatement("insert into users(Id, username, email, password) values(?, ?, ?, ?)");
                     DBMS.insetToDB(pstmt, scan);
                 } else if (option == 2) {
-                    System.out.println("not created yet");
+                    PreparedStatement pstmt = connection.prepareStatement("select * from users") ;
+                    DBMS.readDB(pstmt);
                 } else if (option == 3) {
                     System.out.println("not created yet");
                 } else if (option == 4) {

@@ -1,4 +1,5 @@
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -28,6 +29,26 @@ public class DataBaseManager {
         } catch (SQLException e) {
             System.out.println("Something went wrong" + e);
             e.printStackTrace();
+        }
+    }
+
+    public void readDB(PreparedStatement pstmt){
+        try {
+//            String query = "select * from users";
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("Id");
+                String username = resultSet.getString("username");
+                String email = resultSet.getString("email");
+
+                System.out.println("{" +
+                        "\n Id: " + id + ",\n" +
+                        " Username: " + username + ",\n" +
+                        " Email: " + email +
+                        "\n},");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
